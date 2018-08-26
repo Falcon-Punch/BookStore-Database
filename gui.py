@@ -1,6 +1,11 @@
 from tkinter import *
 import backend
 
+def view_command():
+    list1.delete(0, END)
+    for row in backend.view():
+        list1.insert(END, row)
+
 window=Tk()
 
 window.wm_title("BookStore Database")
@@ -42,7 +47,7 @@ scrollBar.grid(row=3, column=4, rowspan=6)
 list1.configure(yscrollcommand=scrollBar.set)
 scrollBar.configure(command=list1.yview)
 
-button1=Button(window, text="View All", width=12)
+button1=Button(window, text="View All", width=12, command=view_command)
 button1.grid(row=3, column=5)
 
 button1=Button(window, text="Search Entry", width=12)
