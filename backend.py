@@ -22,6 +22,22 @@ def view():
     conn.close()
     return rows
 
+def search(title="", author="", year="", isbn=""):
+    conn=sqlite3.connect("bookList.db")
+    curr=conn.cursor()
+    curr.execute("SELECT * FROM book WHERE title=? OR author=? OR year=? OR isbn=?", (title, author, year, isbn))
+    rows=curr.fetchall()
+    conn.close()
+    return rows
+
+def delete(id):
+    conn=sqlite3.connect("bookList.db")
+    curr=conn.cursor()
+    curr.execute("DELETE FROM book WHERE id=?", (id,))
+    conn.commit()
+    conn.close()
+
 connect()
-insert("Decoding the Coding Interview", "John Doe", 2015, 123456789)
+delete(6)
 print(view())
+print(search(title="Intro to C++"))
