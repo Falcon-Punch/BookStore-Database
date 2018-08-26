@@ -45,6 +45,3 @@ def update(id, title, author, year, isbn):
     conn.close()
 
 connect()
-update(6, "The Quran", "Gilgamesh", -3000, 100000001)
-print(view())
-print(search(title="The Quran"))

@@ -6,6 +6,11 @@ def view_command():
     for row in backend.view():
         list1.insert(END, row)
 
+def search_command():
+    list1.delete(0, END)
+    for row in backend.search(title_text.get(), author_text.get(), year_text.get(), isbn_text.get()):
+        list1.insert(END, row)
+
 window=Tk()
 
 window.wm_title("BookStore Database")
@@ -50,7 +55,7 @@ scrollBar.configure(command=list1.yview)
 button1=Button(window, text="View All", width=12, command=view_command)
 button1.grid(row=3, column=5)
 
-button1=Button(window, text="Search Entry", width=12)
+button1=Button(window, text="Search", width=12, command=search_command)
 button1.grid(row=4, column=5)
 
 button1=Button(window, text="Add Entry", width=12)
