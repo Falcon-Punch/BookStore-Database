@@ -11,6 +11,11 @@ def search_command():
     for row in backend.search(title_text.get(), author_text.get(), year_text.get(), isbn_text.get()):
         list1.insert(END, row)
 
+def add_command():
+    backend.insert(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    list1.delete(0, END)
+    list1.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
+
 window=Tk()
 
 window.wm_title("BookStore Database")
@@ -58,7 +63,7 @@ button1.grid(row=3, column=5)
 button1=Button(window, text="Search", width=12, command=search_command)
 button1.grid(row=4, column=5)
 
-button1=Button(window, text="Add Entry", width=12)
+button1=Button(window, text="Add Entry", width=12, command=add_command)
 button1.grid(row=5, column=5)
 
 button1=Button(window, text="Update Entry", width=12)
