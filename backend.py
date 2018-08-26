@@ -37,7 +37,14 @@ def delete(id):
     conn.commit()
     conn.close()
 
+def update(id, title, author, year, isbn):
+    conn=sqlite3.connect("bookList.db")
+    curr=conn.cursor()
+    curr.execute("UPDATE book SET title=?, author=?, year=?, isbn=? WHERE id=?", (title, author, year, isbn, id))
+    conn.commit()
+    conn.close()
+
 connect()
-delete(6)
+update(6, "The Quran", "Gilgamesh", -3000, 100000001)
 print(view())
-print(search(title="Intro to C++"))
+print(search(title="The Quran"))

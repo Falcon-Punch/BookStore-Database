@@ -51,7 +51,7 @@ button1.grid(row=4, column=5)
 button1=Button(window, text="Add Entry", width=12)
 button1.grid(row=5, column=5)
 
-button1=Button(window, text="Update", width=12)
+button1=Button(window, text="Update Entry", width=12)
 button1.grid(row=6, column=5)
 
 button1=Button(window, text="Delete Entry", width=12)
