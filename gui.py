@@ -2,9 +2,17 @@ from tkinter import *
 import backend
 
 def get_selected_row(event):
+    global selected_tuple
     index=list1.curselection()[0]
     selected_tuple=list1.get(index)
-    print(selected_tuple)
+    entry1.delete(0, END)
+    entry1.insert(END, selected_tuple[1])
+    entry2.delete(0, END)
+    entry2.insert(END, selected_tuple[2])
+    entry3.delete(0, END)
+    entry3.insert(END, selected_tuple[3])
+    entry4.delete(0, END)
+    entry4.insert(END, selected_tuple[4])
 
 def view_command():
     list1.delete(0, END)
@@ -20,6 +28,9 @@ def add_command():
     backend.insert(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
     list1.delete(0, END)
     list1.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
+
+def delete_command():
+    backend.delete(selected_tuple[0])
 
 window=Tk()
 
@@ -76,7 +87,7 @@ button1.grid(row=5, column=5)
 button1=Button(window, text="Update Entry", width=12)
 button1.grid(row=6, column=5)
 
-button1=Button(window, text="Delete Entry", width=12)
+button1=Button(window, text="Delete Entry", width=12, command=delete_command)
 button1.grid(row=7, column=5)
 
 button1=Button(window, text="Close App", width=12)
