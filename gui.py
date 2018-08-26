@@ -1,6 +1,11 @@
 from tkinter import *
 import backend
 
+def get_selected_row(event):
+    index=list1.curselection()[0]
+    selected_tuple=list1.get(index)
+    print(selected_tuple)
+
 def view_command():
     list1.delete(0, END)
     for row in backend.view():
@@ -56,6 +61,8 @@ scrollBar.grid(row=3, column=4, rowspan=6)
 
 list1.configure(yscrollcommand=scrollBar.set)
 scrollBar.configure(command=list1.yview)
+
+list1.bind('<<ListboxSelect>>', get_selected_row)
 
 button1=Button(window, text="View All", width=12, command=view_command)
 button1.grid(row=3, column=5)
