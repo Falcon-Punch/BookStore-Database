@@ -1,6 +1,9 @@
 from tkinter import *
+import backend
 
 window=Tk()
+
+window.wm_title("BookStore Database")
 
 label1=Label(window, text="Title")
 label1.grid(row=0, column=0)
